@@ -1,0 +1,38 @@
+[user]
+	name = Denis Fakhrtdinov
+	email = me@shizz.ru
+
+[color]
+	diff = true
+	grep = true
+	status = true
+	ui = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = normal
+	frag = magenta bold
+	old = red bold
+	new = blue bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[alias]
+	st = status --short
+	pl = pull
+	ps = push
+	pt = push --tags
+	br = branch
+	co = checkout
+	ci = commit -m
+	me = merge
+	aa = add --all
+	ta = tag -a
+	hi = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	al = !git config -l | grep alias | cut -c 7-
+	lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) — %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
