@@ -43,3 +43,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export LC_ALL="en_US.utf-8"
+
+for dir in \
+  ~/bin
+; do 
+  if [[ -d $dir ]]; then path+=$dir; fi 
+done;
+export PATH;
