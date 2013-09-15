@@ -198,9 +198,14 @@ hiparam(Threshold, Param) ->
         end
     end, [], erlang:processes()).
 
-pi({Pid, Any}) ->
+pi({Pid, Any}) when is_pid(Pid) ->
     pi([{Pid, Any}]);
-pi([{Pid, _} | Tail]) ->
+pi(Pid) when is_pid(Pid) ->
+    pi([Pid]);
+pi([{Pid, _} | Tail]) when is_pid(Pid)->
+    output_pi(Pid),
+    pi(Tail);
+pi([Pid | Tail]) when is_pid(Pid) ->
     output_pi(Pid),
     pi(Tail);
 pi([]) ->
