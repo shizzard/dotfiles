@@ -10,6 +10,9 @@ echo "Performing the linking...";
 echo ".tmux.conf";
 if [ -f ".tmux.conf" ]; then rm .tmux.conf; fi
 ln -s ~/dotfiles/.tmux.conf .;
+echo ".tmux.template";
+if [ -f ".tmux.template" ]; then rm .tmux.template; fi
+ln -s ~/dotfiles/.tmux.template .;
 echo ".zshrc";
 if [ -f ".zshrc" ]; then rm .zshrc; fi
 ln -s ~/dotfiles/.zshrc .;
