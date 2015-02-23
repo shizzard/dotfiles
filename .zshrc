@@ -45,7 +45,9 @@ source $ZSH/oh-my-zsh.sh
 export LC_ALL="en_US.utf-8"
 
 for dir in \
-  ~/bin
+  ~/bin \
+  /opt/local/bin \
+  /opt/local/sbin \
 ; do 
   if [[ -d $dir ]]; then path+=$dir; fi 
 done;
