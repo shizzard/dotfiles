@@ -1,0 +1,22 @@
+selectp -t 0
+splitw -v -p 50
+
+selectp -t 1
+splitw -h -p 67
+selectp -t 2
+splitw -h -p 50
+
+selectp -t 4
+splitw -h -p 67
+selectp -t 5
+splitw -h -p 50
+
+send-keys -t1 "htop" C-m
+
+send-keys -t2 "cd code/proj/owl_router" C-m
+send-keys -t3 "cd code/proj/owl_router" C-m
+
+send-keys -t5 "cd code/proj/owl_router; erl-17.5" C-m
+send-keys -t6 "cd code/proj/owl_router; erl-17.5" C-m
+
+selectp -t 4

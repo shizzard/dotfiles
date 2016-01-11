@@ -34,6 +34,15 @@ ZSH_THEME="shizzard"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+for dir in \
+  ~/bin \
+  /opt/local/bin \
+  /opt/local/sbin \
+; do 
+  if [[ -d $dir ]]; then path+=$dir; fi 
+done;
+export PATH;
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -43,12 +52,41 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export LC_ALL="en_US.utf-8"
+export PYTHONPATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
 
-for dir in \
-  ~/bin \
-  /opt/local/bin \
-  /opt/local/sbin \
-; do 
-  if [[ -d $dir ]]; then path+=$dir; fi 
-done;
-export PATH;
+alias erl-r15b03='. /Users/shizz/bin/erlang/erl-r15b03/activate'
+alias erl-17.5='. /Users/shizz/bin/erlang/erl-17.5/activate'
+
+
+
+devel() {
+	git checkout develop;
+	git submodule foreach git checkout develop;
+	git pull;
+	git submodule foreach git pull;
+}
+
+rel() {
+	if [ -z "$1" ]; then
+		echo "Specify release version";
+		exit 1;
+	fi;
+
+	git checkout releases/$1;
+	git submodule foreach git checkout releases/$1;
+	git pull;
+	git submodule foreach git pull;
+}
+
+newbranch() {
+	if [ -z "$1" ]; then
+		echo "Specify task number";
+		exit 1;
+	fi;
+	if [ -z "$2" ]; then
+		echo "Specify short task definition (no spaces)";
+		exit 1;
+	fi;
+
+	git checkout -b "df-xmppcs-$1-$2"
+}
